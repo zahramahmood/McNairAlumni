@@ -19,8 +19,7 @@
 		$Password = $_POST['Password'];
 
 		$qry = "SELECT Hash FROM alumni WHERE Username = '$Username'";
-		$result = mysql_query($qry);
-		
+		$result = mysql_query($qry) or die("Could not connect: " . mysql_error());
 		if($result){
 			$hash = mysql_fetch_array($result)['Hash'];
 

@@ -5,7 +5,15 @@ function open_mysql(){
 	$host = "localhost";
 	$database = "mcnair";
 
-	$conn = mysql_connect($host,$user,$pass);
-	mysql_select_db($database, $conn);
+	$conn = mysql_connect($host,$user,$pass) or die("Could not connect: " . mysql_error());
+	if(!$conn)
+	{
+		echo "Cannot connect to Database";
+	}
+	else
+	{
+		mysql_select_db($database, $conn);
+
+	}
 }
 ?>
