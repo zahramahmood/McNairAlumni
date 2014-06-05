@@ -42,15 +42,21 @@
 
 
 					if(substr($query, strlen($query)-3) == "&& "){
-						$query = substr($query, 0, strlen($query)-3);
+						$query = substr($query, 0, strlen($query)-3) . " ORDER BY LName, FName";
 					}
 					else if(substr($query, strlen($query)-6) == "WHERE "){
-						$query = substr($query, 0, strlen($query)-6);
+						$query = substr($query, 0, strlen($query)-6) . " ORDER BY LName, FName";
 					}
 					
 					$result = mysql_query($query);
+					$i=0;
 					while($row = mysql_fetch_array($result)){
-						echo "<tr><td>".$row['FName']."</td><td>".$row['Year']."</tr>";
+						echo "<tr>
+							<form name='student"."$i' method='post' action='studentProfile.php'>
+								<input type='hidden' name='Username' value='".$row['Username']."'>
+								<td><a onclick='document.student"."$i.submit();'>".$row['FName']."</a></td><td>".$row['Year']."</a>
+							</form>
+							</tr>";
 					}
 				}
 			?>
