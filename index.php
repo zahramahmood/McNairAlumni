@@ -1,5 +1,10 @@
 <?php 
-	function login($user=""){ return '<tr><td><input type="text" name="Username" id="Username" value="'.$user.'" placeholder="Username"/></td></tr><tr><td><input type="password" name="Password" placeholder="Password" id="Pass"/></td></tr><tr colspan=2><td><button onclick="verifyPass();return false;">Login</button></td></tr>';
+	function login($user=""){ 
+
+		return '<tr><td><input type="text" name="Username" id="Username" value="'.$user.'" placeholder="Username"/></td></tr>
+				<tr><td><input type="password" name="Password" placeholder="Password" id="Pass"/></td></tr>
+				<tr colspan=2><td><input type="submit" name="Submit"/></td></tr>'
+				;
 	}
 
 	$loginMenu = "";
@@ -67,6 +72,11 @@
 			margin-left: -46.5px; 
 		}
 
+		#register{
+			font-size: 0.75em;
+			font-style: italic;
+		}
+
 
 	</style>
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -117,12 +127,12 @@
 		<div id="background2" style='background-image:url("./images/bg1.jpg");'></div> -->
 	</div>
 
-	<form name="form1" method="post" action="index.php">
 	<table id="loginMenu">
-		<? echo $loginMenu;?>
+		<form name="form1" method="post" action="index.php">
+			<? echo $loginMenu;?>
+		</form>
+			<tr><td id="register"><p>Don't have an account? <a href="register_form.php">Register here</a></p></td></tr>
 	</table>
-	</form>
-
 
 
 </body>
