@@ -24,16 +24,18 @@
 		}
 		else
 		{
-			$username_query = "SELECT * FROM alumni WHERE Username = '$Username";
-			$count = mysql_num_rows($username_query);
-			echo $count;
+			$username_query = "SELECT * FROM alumni WHERE Username = '$Username'";
+			$result =mysql_query($username_query);
+			$count = mysql_num_rows($result);
 			if ($count != 0)
 			{
 				echo "Username already exists";
 			}
-			$query = "INSERT INTO alumni (Username, Hash, FName, MName, LName, Year, Email) VALUES('$Username', '$Password', '$FName', '$MName', '$LName', '$Year', '$Email')"; 
-			$insert = mysql_query($query) or die(mysql_error(). " " . mysql_errno());
-
+			else
+			{
+				$query = "INSERT INTO alumni (Username, Hash, FName, MName, LName, Year, Email) VALUES('$Username', '$Password', '$FName', '$MName', '$LName', '$Year', '$Email')"; 
+				$insert = mysql_query($query) or die(mysql_error(). " " . mysql_errno());
+			}
 		}
 	// }
 	// else
