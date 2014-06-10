@@ -41,7 +41,6 @@
 	// else
 	// {
 	// 	echo "POST HERE";
-	// 	var_dump($_POST);
 	// }
 
 
