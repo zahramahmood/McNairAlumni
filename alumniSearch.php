@@ -2,13 +2,16 @@
 	<head>
 		<title>Alumni Database</title>
 		<style>
+			body{
+				background-image: url("./images/database.jpg");
+			}
 			h1{
 				text-align: center;
 				font-family: sans-serif;
+				color: white;
 			}
 			#searchBar{
 				border-collapse: collapse;
-				border: 1px solid orange;
 				opacity: 0.4;
 				filter: alpha(opacity=40); /* for IE8 and earlier*/
 				margin: -10px 100px;
@@ -17,13 +20,37 @@
 			#searchBar:hover{
 				opacity: 1.0;
 				filter: alpha(opacity=100); /* for IE8 and earlier*/
-			}
-			table td{
-				background-color: yellow;
-				text-align: center;
+				background: (0,0,0,0.4)
 			}
 			table{
-				margin: 10px 10px;
+				table-layout: fixed;
+				margin: 20px;
+				width: 800px;
+				background: rgba(255,255,255,0.4);
+				margin-left: auto;
+				margin-right: auto;
+
+			}
+			td{
+				height: 200px;
+			}
+			td:hover{
+				background: rgba(0,0,0,0.4);
+				color: white;
+			}
+			#studentName{
+				position: relative;
+				top: 8px;
+				text-align: center;
+				font-family: sans-serif;
+				font-size: small;
+			}
+			#studentPicture{
+				position: relative;
+				left: 20px;
+				height: 140px;
+				width: 115px;
+				padding-bottom: 5px;
 			}
 		</style>
 	</head>
@@ -49,6 +76,9 @@
 		</form>
 		<div>
 			<table>
+				<colgroup>
+					<col><col><col><col><col>
+				</colgroup>
 			<?
 				if ($_SERVER["REQUEST_METHOD"] == "POST")
 				{
@@ -90,12 +120,15 @@
 							if (isset($fullData[$p]))
 							{
 								echo 
-								"<td>
-									<form name='student{$p}' method='post' action='studentProfile.php'>
-										<input type='hidden' name='Username' value='{$fullData[$p]['Username']}'>
-										<a onclick='document.student{$p}.submit();'>{$fullData[$p]['FName']}</a>
-									</form>
-								</td>";
+								"<form name='student{$p}' method='post' action='studentProfile.php'>
+									<td>
+										<img id='studentPicture' src='./images/profilePics/{$fullData[$p]['Username']}.jpg' onerror=\"this.src='./images/profilePics/cougar.jpg';\" onclick='document.student{$p}.submit();'>
+										<div id='studentName'>
+											<input type='hidden' name='Username' value='{$fullData[$p]['Username']}'>
+											<a onclick='document.student{$p}.submit();'>{$fullData[$p]['LName']}, {$fullData[$p]['FName']}</a>
+										</div>
+									</td>
+								</form>";
 							}
 						}
 						echo "</tr>";
