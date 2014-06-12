@@ -1,10 +1,36 @@
 <html>
 	<head>
 		<title>Alumni Database</title>
+		<style>
+			h1{
+				text-align: center;
+				font-family: sans-serif;
+			}
+			#searchBar{
+				border-collapse: collapse;
+				border: 1px solid orange;
+				opacity: 0.4;
+				filter: alpha(opacity=40); /* for IE8 and earlier*/
+				margin: -10px 100px;
+				text-align: center;
+			}
+			#searchBar:hover{
+				opacity: 1.0;
+				filter: alpha(opacity=100); /* for IE8 and earlier*/
+			}
+			table td{
+				background-color: yellow;
+				text-align: center;
+			}
+			table{
+				margin: 10px 10px;
+			}
+		</style>
 	</head>
 
 	<body>
-		<form method="post" action="alumniSearch.php">
+		<h1>Student Database</h1>
+		<form method="post" action="alumniSearch.php" id="searchBar">
 			<input type="text" placeholder="First Name" name="FName">
 			<input type="text" placeholder="Last Name" name="LName">
 			<select type="select" name="year">
@@ -49,18 +75,42 @@
 					}
 					
 					$result = mysql_query($query);
-					$i=0;
-					while($row = mysql_fetch_array($result)){
-						echo "<tr>
-							<form name='student"."$i' method='post' action='studentProfile.php'>
-								<input type='hidden' name='Username' value='".$row['Username']."'>
-								<td><a onclick='document.student"."$i.submit();'>".$row['FName']."</a></td><td>".$row['Year']."</a>
-							</form>
-							</tr>";
+					$n = mysql_num_rows($result);
+					$fullData = array();
+					while($row = mysql_fetch_array($result))
+					{
+						$fullData[] = $row;
 					}
+					for ($i = 0; $i <= $n; $i+= 5)
+					{
+						echo "<tr>";
+						for ($j = 0; $j < 5; $j++)
+						{		
+							$p = $i + $j;
+							if (isset($fullData[$p]))
+							{
+								echo 
+								"<td>
+									<form name='student{$p}' method='post' action='studentProfile.php'>
+										<input type='hidden' name='Username' value='{$fullData[$p]['Username']}'>
+										<a onclick='document.student{$p}.submit();'>{$fullData[$p]['FName']}</a>
+									</form>
+								</td>";
+							}
+						}
+						echo "</tr>";
+					}
+							// echo " <table><tr>
+							// <form name='student"."$i' method='post' action='studentProfile.php'>
+							// 	<input type='hidden' name='Username' value='".$row['Username']."'>
+							// 	<td><a onclick='document.student"."$i.submit();'>".$row['FName']."</a></td><td>".$row['Year']."</a>
+							// </form>
+							// </tr></table>";
+							// $i++;
+					
 				}
 			?>
-			</table>
+		</table>
 		</div>
 	</body>
 </html>
