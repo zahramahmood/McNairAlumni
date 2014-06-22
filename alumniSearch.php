@@ -65,7 +65,7 @@
 					require("./functions.php");
 
 					$result = query("SELECT DISTINCT Year FROM alumni");
-					while ($row = mysqli_fetch_array($result))
+					foreach($result as $row)
 					{
 						echo "<option value=".$row['Year'].">".$row['Year']."</option>";
 					}
@@ -104,9 +104,9 @@
 					}
 					
 					$result = query($query);
-					$n = mysqli_num_rows($result);
+					$n = count($result);
 					$fullData = array();
-					while($row = mysqli_fetch_array($result))
+					foreach($result as $row)
 					{
 						$fullData[] = $row;
 					}

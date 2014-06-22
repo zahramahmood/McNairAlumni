@@ -6,9 +6,9 @@
 
 	require("./functions.php");
 
-	$result = query("SELECT * FROM alumni WHERE Username = '$Username'");
+	$result = query("SELECT * FROM alumni WHERE Username = ?", $Username);
 
-	$row = mysqli_fetch_array($result);
+	$row = $result[0];
 
 	//FORMAT PROFILE here
 	//can let people connect to linkedin and facebook so they don't feel like they have fill in more info

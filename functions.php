@@ -4,86 +4,14 @@
  * Simply use $result = query(" SQL STATEMENT "), will have same result as:
  * $query = "SQL Statement";
  * $result = mysql_query($query); <----------- This is what this function will return. 
+ * 
+ * Do not use any other mysql or mysqli functions either
+ * 
+ * RETURNS AN ARRAY OF ALL ROWS
+ * So if result only returns 1 row, you have to index into the array at index 0.
+ * use count() function to mimic mysql_num_rows function to get number of rows
  */
-function query(){
-	$user = "root";
-	$pass = "root";
-	$host = "localhost";
-	$database = "mcnair";
-
-	$conn = mysqli_connect($host,$user,$pass, $database) or die("Could not connect: " . mysqli_error());
-	if(!$conn)
-	{
-		echo "Cannot connect to Database";
-	}
-
-	$query = func_get_arg(0);
-	$result = mysqli_query($conn, $query) or die("Could not connect: " . mysqli_error());
-	return $result;
-}
-
-// function query_f(/* query, [...] */){
-// 	$user = "root";
-// 	$pass = "root";
-// 	$host = "localhost";
-// 	$database = "mcnair";
-// 	$conn = mysqli_connect($host,$user,$pass);
-// 	if(!$conn)
-// 	{
-// 		echo "Cannot connect to Database";
-// 	}
-// 	else
-// 	{
-// 		mysqli_select_db($conn, $database);
-// 	}
-// 	// store query
-// 	$query = func_get_arg(0);
-// 	$parameters = array_slice(func_get_args(), 1);
-// 	$param = "'".implode("','",$parameters)."'";
-
-// 	// Prepare the statement
-// 	$stmt = mysqli_prepare($conn, $query);
-// 	if ($stmt == false)
-// 	{
-// 		echo "The statement could not be created";
-// 		exit;
-// 	}
-
-// 	// Bind the parameters
-// 	$bind = mysqli_stmt_bind_param($stmt, 's', $param);
-// 	echo mysqli_stmt_error($stmt);
-// 	if ($bind == false)
-// 	{
-// 		echo "Could not bind";
-// 	}
-// 	else
-// 	{
-// 		echo "Bind successful";
-// 	}
-
-// 	// Execute the statement
-// 	$execute = mysqli_stmt_execute($stmt);
-// 	if ($execute = false)
-// 	{
-// 		echo "Could not execute";
-// 	}
-
-
-	
-// 	// fetch the data
-// 	$fetch = mysqli_stmt_fetch($stmt)
-// 	if ($fetch == false)
-// 	{
-// 		echo "Could not fetch data";
-// 	}
-// 	else
-// 	{
-// 		return $fetch;
-// 	}
-// }
-
-
-function query_g(){
+function query(/* QUERY [, param1, param2...paramX] */){
     // SQL statement
     $sql = func_get_arg(0);
 
@@ -96,10 +24,10 @@ function query_g(){
     {
         try
         {
-        	$user = "root";
-			$pass = "root";
-			$host = "localhost";
-			$database = "mcnair";
+            $user = "root";
+            $pass = "root";
+            $host = "localhost";
+            $database = "mcnair";
 
             // connect to database
             $handle = new PDO("mysql:dbname=" . $database . ";host=localhost", $user, $pass);
@@ -117,7 +45,6 @@ function query_g(){
 
     // prepare SQL statement
     $statement = $handle->prepare($sql);
-
     if ($statement === false)
     {
         // trigger (big, orange) error
@@ -131,18 +58,11 @@ function query_g(){
     // return result set's rows, if any
     if ($results !== false)
     {
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    	return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
     else
-   	{
+    {
         return false;
     }
 }
-
-// open_mysql();
-// $result = query("SELECT Hash FROM alumni WHERE Username = 'zm123'");
-// var_dump($result);
-// var_dump(mysql_fetch_array($result));
-// $result = query_g("SELECT Hash FROM alumni WHERE Username = '?'", "zm123");
-// var_dump($result);
 ?>

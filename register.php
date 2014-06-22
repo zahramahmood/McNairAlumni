@@ -23,15 +23,15 @@
 		}
 		else
 		{
-			$result = query("SELECT * FROM alumni WHERE Username = '$Username'");
-			$count = mysqli_num_rows($result);
+			$result = query("SELECT * FROM alumni WHERE Username = ?", $_POST['Username']);
+			$count = count($result);
 			if ($count != 0)
 			{
 				echo "Username already exists";
 			}
 			else
 			{
-				$insert = query("INSERT INTO alumni (Username, Hash, FName, MName, LName, Year, Email) VALUES('?, ?, ?, ?, ?, ?, ?)", 
+				$insert = query("INSERT INTO alumni (Username, Hash, FName, MName, LName, Year, Email) VALUES(?, ?, ?, ?, ?, ?, ?)", 
 					$_POST["Username"], 
 					hash("sha256", $_POST["Pass"]), 
 					$_POST["FName"], 

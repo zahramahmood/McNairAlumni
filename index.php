@@ -21,9 +21,10 @@
 		$Username = $_POST['Username'];
 		$Password = $_POST['Password'];
 
-		$result = query("SELECT Hash FROM alumni WHERE Username = '$Username'");
+		$result = query("SELECT Hash FROM alumni WHERE Username = ?", $Username);
 		if($result){
-			$hash = mysqli_fetch_array($result)['Hash'];
+			$row = $result[0];
+			$hash = $row['Hash'];
 
 			if(hash("sha256", $Password) == $hash){
 				session_start();
