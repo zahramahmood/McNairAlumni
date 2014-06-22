@@ -62,11 +62,10 @@
 			<input type="text" placeholder="Last Name" name="LName">
 			<select type="select" name="year">
 				<?
-					require("./functions.inc");
-					open_mysql();
-					$query = "SELECT DISTINCT Year FROM alumni";
-					$result = mysql_query($query);
-					while ($row = mysql_fetch_array($result))
+					require("./functions.php");
+
+					$result = query("SELECT DISTINCT Year FROM alumni");
+					while ($row = mysqli_fetch_array($result))
 					{
 						echo "<option value=".$row['Year'].">".$row['Year']."</option>";
 					}
@@ -104,10 +103,10 @@
 						$query = substr($query, 0, strlen($query)-6) . " ORDER BY LName, FName";
 					}
 					
-					$result = mysql_query($query);
-					$n = mysql_num_rows($result);
+					$result = query($query);
+					$n = mysqli_num_rows($result);
 					$fullData = array();
-					while($row = mysql_fetch_array($result))
+					while($row = mysqli_fetch_array($result))
 					{
 						$fullData[] = $row;
 					}

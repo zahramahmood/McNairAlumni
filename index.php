@@ -1,6 +1,5 @@
 <?php 
 	function login($user=""){ 
-
 		return '<tr><td><input type="text" name="Username" id="Username" value="'.$user.'" placeholder="Username"/></td></tr>
 				<tr><td><input type="password" name="Password" placeholder="Password" id="Pass"/></td></tr>
 				<tr colspan=2><td><input type="submit" name="Submit"/></td></tr>'
@@ -17,16 +16,14 @@
 		$loginMenu = "<tr><td>Please provide your password</td></tr>".login($_POST['Username']);
 	}
 	else{
-		require("functions.inc");
-		open_mysql();
+		require("functions.php");
 
 		$Username = $_POST['Username'];
 		$Password = $_POST['Password'];
 
-		$qry = "SELECT Hash FROM alumni WHERE Username = '$Username'";
-		$result = mysql_query($qry) or die("Could not connect: " . mysql_error());
+		$result = query("SELECT Hash FROM alumni WHERE Username = '$Username'");
 		if($result){
-			$hash = mysql_fetch_array($result)['Hash'];
+			$hash = mysqli_fetch_array($result)['Hash'];
 
 			if(hash("sha256", $Password) == $hash){
 				session_start();
