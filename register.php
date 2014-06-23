@@ -1,15 +1,7 @@
 <?php
 	
 	// if ($_SERVER["REQUESTS_METHOD"] == "POST")
-	// {
-		// $Username = $_POST["Username"];
-		// $Password = hash("sha256", $_POST["Pass"]);
-		// $FName = $_POST["FName"];
-		// $MName = $_POST["MName"];
-		// $LName = $_POST["LName"];
-		// $Year = $_POST["Year"];
-		// $Email = $_POST["Email"];
-		
+	// {		
 		//open database
 		require("./functions.php");
 		// block server-side form discrepancies from entering the database (must implement on client-side as well)
@@ -33,7 +25,7 @@
 			{
 				$insert = query("INSERT INTO alumni (Username, Hash, FName, MName, LName, Year, Email) VALUES(?, ?, ?, ?, ?, ?, ?)", 
 					$_POST["Username"], 
-					hash("sha256", $_POST["Pass"]), 
+					password_hash($_POST["Pass"], PASSWORD_DEFAULT), 
 					$_POST["FName"], 
 					$_POST["MName"],
 					$_POST["LName"],

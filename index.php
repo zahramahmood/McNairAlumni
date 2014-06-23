@@ -26,7 +26,7 @@
 			$row = $result[0];
 			$hash = $row['Hash'];
 
-			if(hash("sha256", $Password) == $hash){
+			if(password_verify($Password, $hash)){
 				session_start();
 				$_SESSION['Username'] = $Username;
 				header("Location:./alumniSearch.php");
