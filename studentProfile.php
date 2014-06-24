@@ -53,6 +53,7 @@
 		</script>
 	<head>
 	<body>
+		<?include_once 'navigation.php';?>
 		<h1>
 			<?echo $row['FName']. " " . $row['LName'];?>
 		</h1>

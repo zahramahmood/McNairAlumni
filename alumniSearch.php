@@ -25,7 +25,7 @@
 				filter: alpha(opacity=100); /* for IE8 and earlier*/
 				background: (0,0,0,0.4)
 			}
-			table{
+			#searchResults{
 				table-layout: fixed;
 				margin: 20px;
 				width: 800px;
@@ -34,10 +34,10 @@
 				margin-right: auto;
 
 			}
-			td{
+			#searchResults>tbody>tr>td{
 				height: 200px;
 			}
-			td:hover{
+			#searchResults>tbody>tr>td:hover{
 				background: rgba(0,0,0,0.4);
 				color: white;
 			}
@@ -59,6 +59,7 @@
 	</head>
 
 	<body>
+		<?include_once 'navigation.php';?>
 		<h1>Student Database</h1>
 		<form method="post" action="alumniSearch.php" id="searchBar">
 			<input type="text" placeholder="First Name" id="FName" name="FName">
@@ -77,7 +78,7 @@
 			<input type="submit" value="Search!">
 		</form>
 		<div>
-			<table>
+			<table id='searchResults'>
 				<colgroup>
 					<col><col><col><col><col>
 				</colgroup>
