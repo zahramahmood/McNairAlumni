@@ -1,6 +1,9 @@
 <html>
 	<head>
 		<title>Alumni Database</title>
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="./autocomplete/jquery.autocomplete.js"></script>s
+		<link type="text/css" rel="stylesheet" href="./autocomplete/styles.css">
 		<style>
 			body{
 				background-image: url("./images/database.jpg");
@@ -59,9 +62,15 @@
 		<?include_once 'navigation.php';?>
 		<h1>Student Database</h1>
 		<form method="post" action="alumniSearch.php" id="searchBar">
+<<<<<<< HEAD
 			<input type="text" placeholder="First Name" name="FName">
 			<input type="text" placeholder="Last Name" name="LName">
 			<select type="select" name="Year">
+=======
+			<input type="text" placeholder="First Name" id="FName" name="FName">
+			<input type="text" placeholder="Last Name" id="LName" name="LName">
+			<select type="select" name="year">
+>>>>>>> FETCH_HEAD
 				<?
 					require("./functions.php");
 
@@ -146,4 +155,20 @@
 		</table>
 		</div>
 	</body>
+	<script>
+		<?php
+			//echoes (not returns) a list of options for autocompleteArray
+			function autocompleteArray($col){
+				$result = query("SELECT DISTINCT $col FROM alumni");
+				$i = 0;
+				foreach($result as $val){
+					echo '"'.$val[$col].'"';
+					if(++$i != count($result)) echo ",";
+				}
+			}
+		?>
+
+		$("#FName").autocomplete({lookup: [ <? autocompleteArray("FName");?>] });
+		$("#LName").autocomplete({lookup: [<? autocompleteArray("LName");?>] });
+	</script>
 </html>
