@@ -62,8 +62,8 @@
 		<?include_once 'navigation.php';?>
 		<h1>Student Database</h1>
 		<form method="post" action="alumniSearch.php" id="searchBar">
-			<input type="text" placeholder="First Name" name="FName">
-			<input type="text" placeholder="Last Name" name="LName">
+			<input type="text" placeholder="First Name" name="FName" id='FName'>
+			<input type="text" placeholder="Last Name" name="LName" id='LName'>
 			<select type="select" name="Year">
 				<?
 					require("./functions.php");
