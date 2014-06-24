@@ -61,7 +61,7 @@
 		<form method="post" action="alumniSearch.php" id="searchBar">
 			<input type="text" placeholder="First Name" name="FName">
 			<input type="text" placeholder="Last Name" name="LName">
-			<select type="select" name="year">
+			<select type="select" name="Year">
 				<?
 					require("./functions.php");
 
