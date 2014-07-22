@@ -29,7 +29,7 @@
 			if(password_verify($Password, $hash)){
 				session_start();
 				$_SESSION['Username'] = $Username;
-				header("Location:./alumniSearch.php");
+				 echo "<script>window.location.href='./home.php';</script>";
 			}
 			else $loginMenu = "<tr><td>Incorrect password</td></tr>".login($Username);
 
@@ -40,7 +40,6 @@
 	}
 	
 ?>
-
 <html>
 <head>
 	<title>Welcome McNair Alumni</title>

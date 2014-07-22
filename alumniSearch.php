@@ -68,7 +68,8 @@
 				<?
 					require("./functions.php");
 
-					$result = query("SELECT DISTINCT Year FROM alumni");
+					$result = query("SELECT DISTINCT Year FROM alumni ORDER BY Year");
+					echo "<option></option>";
 					foreach($result as $row)
 					{
 						echo "<option value=".$row['Year'].">".$row['Year']."</option>";
@@ -94,7 +95,7 @@
 					{
 						$query.="LName LIKE '" . $_POST['LName'] . "%' && ";
 					}
-					if (isset($_POST['Year']))
+					if (isset($_POST['Year']) && $_POST['Year'] != "")
 					{
 						$query.=" Year = '" .$_POST['Year']. "'" ;
 					}

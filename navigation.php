@@ -25,18 +25,22 @@
 		color: white;
 		font-family: sans-serif;
 		text-decoration: none;
-		padding: 10px;
+	}
+	#navigationBar a{
+		width: 100%;
+		height: 100%;
+		display: block;
 	}
 
 </style>
 
 <table id='navigationBar'>
 	<tr>
-		<td><a>Home</a></td>
-		<td><a>My Profile</a></td>
-		<td><a>Inbox</a></td>
+		<td><a href='./home.php'>Home</a></td>
+		<td><a href='./myProfile.php'>My Profile</a></td>
+		<td><a href='./inbox.php'>Inbox</a></td>
 		<td><a href='./alumniSearch.php'>Alumni Database</a></td>
-		<td><a>Events</a></td>
-		<td><a>Logout</a></td>
+		<td><a href='./events.php'>Events</a></td>
+		<td><a href='./logout.php'>Logout</a></td>
 	</tr>
 </table>
