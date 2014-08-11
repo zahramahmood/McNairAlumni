@@ -5,12 +5,13 @@
 	<head>
 	<body>
 		<div class="header">
-			<div id="logo"><img src = "./images/icons/McNairHSlogo.png"></div>
 			<div id="social-connections">
 				<div id="facebook"></div>
 				<div id="twitter"></div>
 				<div id="linkedin"></div>
 			</div>
+			<div id="logo"><img src = "./images/icons/McNairHSlogo.png"></div>
+
 		</div>
 		<div id="Macro">
 			<div class="header">
