@@ -5,10 +5,13 @@
 	<head>
 	<body>
 		<div class="header">
-			<div id="social-connections">
+			<div id="right-hand">
 				<div id="facebook"></div>
 				<div id="twitter"></div>
 				<div id="linkedin"></div>
+				<div id="login">
+
+				</div>
 			</div>
 			<div id="logo"><img src = "./images/icons/McNairHSlogo.png"></div>
 

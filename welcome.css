@@ -4,10 +4,10 @@
 	white-space: nowrap;
 }
 .header *{
-	outline: dotted thin; 
+/*	outline: dotted thin; */
 	display: inline-block;
 }
-#social-connections{
+#right-hand{
 	/*vertical-align: 95px;
 	margin-left: 50% ;*/
 	float: right;
@@ -26,6 +26,11 @@
 	width: 50px;
 	height: 50px;
 	background-color: rgba(170, 170, 168, 0.2); 
+}
+#login{
+	width: 100px;
+	height: 50px;
+	background-color: rgba(170, 170, 168, 0.2);
 }
 #logo img{
 	width: 250px;
