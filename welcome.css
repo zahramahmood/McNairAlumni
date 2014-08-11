@@ -1,0 +1,51 @@
+.header, #macro{
+	/*outline: dotted red thin;*/
+	overflow: hidden;
+	white-space: nowrap;
+}
+.header *{
+	outline: dotted thin; 
+	display: inline-block;
+}
+#social-connections{
+	/*vertical-align: 95px;
+	margin-left: 50% ;*/
+	float: right;
+	clear: both;
+}
+#facebook{
+	width: 50px;
+	height: 50px;
+	background-color: rgba(170, 170, 168, 0.2); 
+}
+#twitter{
+	width: 50px;
+	height: 50px;
+	background-color: rgba(170, 170, 168, 0.2); 
+}
+#linkedin{
+	width: 50px;
+	height: 50px;
+	background-color: rgba(170, 170, 168, 0.2); 
+}
+#logo img{
+	width: 250px;
+}
+#macro{
+	margin-top: 5px;
+	width: 100%;
+	height: 600px;
+	background-color: rgba(170, 170, 168, 0.2); 
+}
+#link-wrapper{
+	width: 291px;
+	margin-top: 10px;
+	margin-left: calc(50% - 145.5px);
+	color: #808080;
+	font: 20px sans-serif;
+	text-align: center;
+	background-color: rgba(170, 170, 168, 0.2); 
+}
+#link-wrapper > div{
+	padding: 2px 20px;
+}
